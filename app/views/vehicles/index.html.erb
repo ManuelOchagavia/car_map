@@ -1,0 +1,34 @@
+<%= Gon::Base.render_data %>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBGjGUAmjraqSAjUAHhPtA6tppvfqBBjw"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gmap3/7.2.0/gmap3.min.js"></script>
+</head>
+
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1">Vehicle Gps Position</span>
+</nav>
+<div class="container">
+  <div class="row justify-content-center" style="width:100%">
+    <div class="map col-md-10 " style="height:550px; margin-top:30px"></div>
+  </div>
+</div>
+  
+  <script>
+    var locations = Array()
+    var mean = [0,0]
+    gon.vehicles.forEach(elem => {
+        locations.push({position:[elem.latitude, elem.longitude], title: elem.vehicle_identifier})
+        mean[0] += elem.latitude
+        mean[1] += elem.longitude
+    });
+    mean[0] = mean[0]/gon.vehicles.length
+    mean[1] = mean[1]/gon.vehicles.length
+    $('.map')
+      .gmap3({
+        center:mean,
+        zoom:8
+      })
+      .marker(locations)
+  </script>

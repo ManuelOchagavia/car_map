@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vehicle_identifier: MyString
+  sent_at: 2020-11-08 17:18:41
+  longitude: 1.5
+  latitude: 1.5
+
+two:
+  vehicle_identifier: MyString
+  sent_at: 2020-11-08 17:18:41
+  longitude: 1.5
+  latitude: 1.5
